@@ -1,6 +1,0 @@
-{
-  "silent": true,
-  "timeout": 10000,
-  "retryErrors": false,
-  "skip": ["^(?!http://localhost)"]
-}

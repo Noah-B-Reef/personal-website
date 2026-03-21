@@ -1,5 +1,0 @@
-{{- /* Anchorized headings */}}
-<h{{ .Level }} id="{{ .Anchor | safeURL }}">
-  {{ .Text | safeHTML }}
-  <a href="#{{ .Anchor | safeURL }}" class="hanchor" ariaLabel="Anchor"></a>
-</h{{ .Level }}>

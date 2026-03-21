@@ -1,0 +1,14 @@
+baseURL = 'https://noah-b-reef.github.io/personal-website/'
+locale = 'en-us'
+title = 'My New Hugo Project'
+theme = 'hugo-xterm'
+
+[params]
+  showMenuItems = true
+
+[menu]
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10

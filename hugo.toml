@@ -1,4 +1,4 @@
-baseURL = 'http://noah-b-reef.github.io/personal-website/'
+baseURL = 'https://noah-b-reef.github.io/personal-website/'
 locale = 'en-us'
 title = 'My New Hugo Project'
 theme = 'hugo-xterm'

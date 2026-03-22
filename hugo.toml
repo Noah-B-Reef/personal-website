@@ -1,6 +1,6 @@
 baseURL = 'https://noah-b-reef.github.io/personal-website/'
 locale = 'en-us'
-title = 'Noah Reef's Personal Website'
+title = 'Noah Reef - Personal Website'
 theme = 'hugo-xterm'
 
 [params]

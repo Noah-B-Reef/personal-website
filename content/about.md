@@ -3,7 +3,7 @@ title: "About Me"
 date: 2026-03-21T13:24:00-05:00
 type: "cv"
 description: "PhD Candidate in Computational Science, Engineering and Mathematics"
-avatar: "/images/photo.svg"
+avatar: "/images/photo.JPG"
 contact:
   phone: "+1 760 668 8422"
   email: "n.reef23@gmail.com"

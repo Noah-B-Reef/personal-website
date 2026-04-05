@@ -1,0 +1,111 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"
+  onload="renderMathInElement(document.body, {
+    delimiters: [
+      {left: '$$', right: '$$', display: true},
+      {left: '$', right: '$', display: false},
+      {left: '\\[', right: '\\]', display: true},
+      {left: '\\(', right: '\\)', display: false}
+    ]
+  });"></script>
+
+<style>
+  /* Tag filter section */
+  .tag-filter {
+    margin: 1.5rem 0 2rem;
+  }
+
+  .tag-filter h2 {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    border: none;
+    padding: 0;
+  }
+
+  .tag-filter__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-filter__btn {
+    display: inline-block;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid currentColor;
+    border-radius: 2rem;
+    background: transparent;
+    color: inherit;
+    font-family: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+    opacity: 0.7;
+  }
+
+  .tag-filter__btn:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+  }
+
+  .tag-filter__btn--active {
+    opacity: 1;
+    background: currentColor;
+    border-color: currentColor;
+  }
+
+  /* Invert text color when active — works for both light and dark themes */
+  .theme--dark .tag-filter__btn--active {
+    color: #0d0d1a;
+    background: #b3b3ff;
+    border-color: #b3b3ff;
+  }
+
+  .tag-filter__btn--active {
+    color: #ffffff;
+    background: #2a2a8a;
+    border-color: #2a2a8a;
+  }
+
+  /* Inline tags on post entries */
+  .post-entry-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin: 0.35rem 0;
+  }
+
+  .post-entry-tag {
+    display: inline-block;
+    padding: 0.15rem 0.55rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-style: italic;
+    cursor: pointer;
+    opacity: 0.65;
+    transition: opacity 0.2s ease;
+    border: 1px solid currentColor;
+  }
+
+  .post-entry-tag:hover {
+    opacity: 1;
+  }
+
+  /* Smooth transition for filtered items */
+  .post-entries .item {
+    transition: opacity 0.25s ease;
+  }
+
+  /* Center blog post content */
+  .post-content {
+    text-align: center;
+  }
+
+  .post-content > * {
+    text-align: left;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+

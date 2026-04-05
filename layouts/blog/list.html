@@ -1,0 +1,116 @@
+{{- define "main" }}
+  <article class="post">
+    <header class="post-header">
+      {{- if .Title }}
+        <h1>{{ .Title | plainify }}</h1>
+      {{- end }}
+
+      {{- with .Params.Description -}}
+        <p>{{ . }}</p>
+      {{- end -}}
+    </header>
+
+    <div class="post-content">
+      {{- with .Content }}
+        {{ . }}
+      {{- end }}
+
+      {{/* Collect all tags across blog posts */}}
+      {{- $allTags := slice -}}
+      {{- range .Pages -}}
+        {{- with .Params.tags -}}
+          {{- range . -}}
+            {{- $allTags = $allTags | append . -}}
+          {{- end -}}
+        {{- end -}}
+      {{- end -}}
+      {{- $allTags = $allTags | uniq | sort -}}
+
+      {{/* Tag filter UI */}}
+      {{- if $allTags }}
+        <div class="tag-filter" id="tag-filter">
+          <h2>Filter by Tag</h2>
+          <div class="tag-filter__buttons">
+            <button class="tag-filter__btn tag-filter__btn--active" data-tag="all" onclick="filterByTag('all', this)">
+              All
+            </button>
+            {{- range $allTags }}
+              <button class="tag-filter__btn" data-tag="{{ . }}" onclick="filterByTag('{{ . }}', this)">
+                {{ . }}
+              </button>
+            {{- end }}
+          </div>
+        </div>
+      {{- end }}
+
+      {{/* Blog post entries with tag data attributes */}}
+      <div class="post-entries">
+        {{- range .Pages }}
+          <div class="item" data-tags="{{ delimit (.Params.tags | default slice) "," }}">
+            <a href="{{ .Permalink }}">
+              {{- if .Title -}}
+                <h2>
+                  {{- .Title | markdownify -}}
+                </h2>
+              {{- else -}}
+                {{- .File.TranslationBaseName | markdownify -}}
+              {{- end -}}
+            </a>
+
+            {{- if and (not .IsSection) (or .Date .Params.Author) -}}
+              <p class="post-meta">
+                {{- with .Date -}}
+                  <span>{{ .Format "2006-01-02" -}}</span>
+                {{- end -}}
+
+                {{- with .Params.Author -}}
+                  <span> | {{ . }}</span>
+                {{- end -}}
+              </p>
+            {{- end -}}
+
+            {{- with .Params.tags }}
+              <div class="post-entry-tags">
+                {{- range . -}}
+                  <span class="post-entry-tag" onclick="filterByTag('{{ . }}', document.querySelector('[data-tag=&quot;{{ . }}&quot;]'))">{{ . }}</span>
+                {{- end -}}
+              </div>
+            {{- end -}}
+
+            {{- with .Params.Description -}}
+              <p class="post-description">{{ . }}</p>
+            {{- end -}}
+          </div>
+        {{- end }}
+      </div>
+    </div>
+
+    <footer class="post-footer">
+      {{- partial "pagination.html" . -}}
+    </footer>
+  </article>
+
+  <script>
+    function filterByTag(tag, btn) {
+      // Update active button
+      document.querySelectorAll('.tag-filter__btn').forEach(function(b) {
+        b.classList.remove('tag-filter__btn--active');
+      });
+      if (btn) btn.classList.add('tag-filter__btn--active');
+
+      // Filter posts
+      document.querySelectorAll('.post-entries .item').forEach(function(item) {
+        if (tag === 'all') {
+          item.style.display = '';
+          return;
+        }
+        var tags = (item.getAttribute('data-tags') || '').split(',');
+        if (tags.indexOf(tag) !== -1) {
+          item.style.display = '';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+{{- end }}

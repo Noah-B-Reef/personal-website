@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "description": "Build helpers: Tola renders the site, Pagefind indexes it for /search/.",
+  "scripts": {
+    "build": "node scripts/tola.mjs build",
+    "test": "node scripts/test-latex.mjs",
+    "dev": "node scripts/tola.mjs dev",
+    "preview": "node scripts/tola.mjs preview",
+    "check": "node scripts/tola.mjs check",
+    "verify": "python3 scripts/check-site.py"
+  },
+  "devDependencies": {
+    "pagefind": "1.5.2"
+  }
+}

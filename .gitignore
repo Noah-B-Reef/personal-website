@@ -1,3 +1,12 @@
 public/
 resources/_gen/
 .hugo_build.lock
+
+# Tola and local tooling
+.tola/
+.public-publish/
+.vendor-vendor/
+.tola-build.lock
+node_modules/
+.tools/
+.DS_Store

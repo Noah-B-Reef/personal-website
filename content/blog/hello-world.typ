@@ -1,4 +1,5 @@
 #import "@tola/source:0.0.0": tola-meta
+#import "/utils/ui.typ": img
 
 #tola-meta((
   title: "Multi-Layer Perceptrons: An Introduction",
@@ -13,7 +14,7 @@ It would be an understatement to say that Deep Learning, and the multi-layer per
 <the-perceptron>
 A perceptron is a linear classifier that is used to classify data into two categories. It is a simple model that is based on the idea of a neuron, which is a biological cell that is used to process information. The perceptron is a mathematical model that is used to process information in a way that is similar to how a neuron processes information. We often picture it with the diagram shown below:
 
-#figure(image("/static/images/perceptron.png", alt: "A diagram of a multi-layer perceptron (MLP) architecture."),
+#img("/static/images/perceptron.png", alt: "A diagram of a multi-layer perceptron (MLP) architecture.",
   caption: [
     A diagram of a multi-layer perceptron (MLP) architecture.
   ]

@@ -14,8 +14,9 @@ if (!existsSync(cli)) {
   console.error("Pagefind is not installed. Run npm ci first.");
   process.exit(1);
 }
-const result = spawnSync(process.execPath, [
-  cli, "--site", site, "--output-path", join(out, "pagefind"),
+const { resolveBinaryPath } = await import("../node_modules/pagefind/lib/resolveBinary.js");
+const result = spawnSync(resolveBinaryPath(["pagefind_extended", "pagefind"]), [
+  "--site", site, "--output-path", join(out, "pagefind"),
 ], { stdio: "inherit", timeout: 120_000 });
 if (result.error) {
   console.error(`Search indexing failed: ${result.error.message}`);
